@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
     const supabase = await createClient()
 
-    // Check if user is logged in
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
@@ -13,7 +12,6 @@ export async function POST(request: Request) {
 
     const { caption_id, vote_value } = await request.json()
 
-    // Get the user's profile id
     const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('id')
@@ -21,13 +19,13 @@ export async function POST(request: Request) {
         .single()
 
     if (profileError || !profile) {
+        console.error('Profile error:', profileError)
         return NextResponse.json({ error: 'Profile not found' }, { status: 404 })
     }
 
-    // Insert the vote
     const { error } = await supabase
         .from('caption_votes')
-        .insert({
+        .upsert({
             caption_id,
             profile_id: profile.id,
             vote_value,
@@ -36,9 +34,10 @@ export async function POST(request: Request) {
             is_from_study: false,
             created_datetime_utc: new Date().toISOString(),
             modified_datetime_utc: new Date().toISOString(),
-        })
+        }, { onConflict: 'profile_id,caption_id' })
 
     if (error) {
+        console.error('Insert error:', error)
         return NextResponse.json({ error: error.message }, { status: 500 })
     }
 

@@ -7,8 +7,9 @@ import { useRouter } from 'next/navigation'
 export default function ProtectedPage() {
     const [user, setUser] = useState<any>(null)
     const [captions, setCaptions] = useState<any[]>([])
+    const [current, setCurrent] = useState(0)
     const [error, setError] = useState<string | null>(null)
-    const [voted, setVoted] = useState<Record<string, number>>({})
+    const [loading, setLoading] = useState(true)
     const router = useRouter()
     const supabase = createClient()
 
@@ -31,63 +32,58 @@ export default function ProtectedPage() {
 
             if (error) setError(error.message)
             else setCaptions(data)
+            setLoading(false)
         }
         load()
     }, [])
 
-    async function vote(caption_id: string, vote_value: number) {
-        if (voted[caption_id]) return
+    async function vote(vote_value: number) {
+        const caption = captions[current]
         const res = await fetch('/api/vote', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ caption_id, vote_value }),
+            body: JSON.stringify({ caption_id: caption.id, vote_value }),
         })
         if (res.ok) {
-            setVoted(prev => ({ ...prev, [caption_id]: vote_value }))
+            setCurrent(prev => prev + 1)
         }
     }
 
+    if (loading) return <p style={{ textAlign: 'center', marginTop: '4rem' }}>Loading...</p>
     if (error) return <p>Error: {error}</p>
     if (!user) return null
 
-    return (
-        <div className="flex min-h-screen justify-center bg-zinc-50 font-sans">
-            <main className="w-full flex flex-col items-center gap-6 py-32 px-10 bg-white">
-                <div style={{ borderLeft: '6px solid #b91c1c', paddingLeft: '1rem' }}>
-                    <h1 className="text-6xl font-bold text-red-700">I Fear this Ate 😂</h1>
-                    <p style={{ color: '#52525b', fontSize: '1.125rem', marginTop: '0.5rem' }}>
-                        Logged in as {user.email} — vote on your favorites!
-                    </p>
+    if (current >= captions.length) {
+        return (
+            <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center' }}>
+                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#b91c1c' }}>You've seen our top 9! 🎉</h1>
+                    <p style={{ color: '#52525b', marginTop: '1rem' }}>Thanks for voting!</p>
                 </div>
+            </div>
+        )
+    }
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginTop: '2rem' }}>
-                    {captions.map((caption: any) => (
-                        <div key={caption.id} style={{ backgroundColor: 'white', border: '1px solid #e4e4e7', borderRadius: '12px', padding: '1rem' }}>
-                            {caption.images?.url && (
-                                <img src={caption.images.url} alt="caption" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem', maxHeight: '200px', objectFit: 'cover' }} />
-                            )}
-                            <p style={{ color: '#111', marginBottom: '0.5rem' }}>{caption.content}</p>
-                            <p style={{ color: '#71717a', fontSize: '0.875rem', marginBottom: '1rem' }}>❤️ {caption.like_count} likes</p>
-                            <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                <button
-                                    onClick={() => vote(caption.id, 1)}
-                                    disabled={!!voted[caption.id]}
-                                    style={{ flex: 1, padding: '0.5rem', backgroundColor: voted[caption.id] === 1 ? '#b91c1c' : '#111', color: 'white', border: 'none', borderRadius: '8px', cursor: voted[caption.id] ? 'default' : 'pointer' }}
-                                >
-                                    👍 Upvote
-                                </button>
-                                <button
-                                    onClick={() => vote(caption.id, -1)}
-                                    disabled={!!voted[caption.id]}
-                                    style={{ flex: 1, padding: '0.5rem', backgroundColor: voted[caption.id] === -1 ? '#b91c1c' : '#111', color: 'white', border: 'none', borderRadius: '8px', cursor: voted[caption.id] ? 'default' : 'pointer' }}
-                                >
-                                    👎 Downvote
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+    const caption = captions[current]
+
+    return (
+        <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f9f9f9' }}>
+            <div style={{ backgroundColor: 'white', border: '1px solid #e4e4e7', borderRadius: '12px', padding: '2rem', maxWidth: '500px', width: '100%' }}>
+                <p style={{ color: '#71717a', fontSize: '0.875rem', marginBottom: '1rem', textAlign: 'center' }}>{current + 1} of {captions.length}</p>
+                {caption.images?.url && (
+                    <img src={caption.images.url} alt="caption" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem', maxHeight: '300px', objectFit: 'cover' }} />
+                )}
+                <p style={{ color: '#111', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{caption.content}</p>
+                <p style={{ color: '#71717a', fontSize: '0.875rem', marginBottom: '1.5rem' }}>❤️ {caption.like_count} likes</p>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                    <button onClick={() => vote(1)} style={{ flex: 1, padding: '0.75rem', backgroundColor: '#111', color: 'white', border: 'none', borderRadius: '8px', fontSize: '1rem', cursor: 'pointer' }}>
+                        👍 Upvote
+                    </button>
+                    <button onClick={() => vote(-1)} style={{ flex: 1, padding: '0.75rem', backgroundColor: '#111', color: 'white', border: 'none', borderRadius: '8px', fontSize: '1rem', cursor: 'pointer' }}>
+                        👎 Downvote
+                    </button>
                 </div>
-            </main>
+            </div>
         </div>
     )
 }
