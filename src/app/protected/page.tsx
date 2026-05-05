@@ -69,9 +69,9 @@ export default function ProtectedPage() {
                 <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '45%', left: '30px', width: '25px', opacity: 0.6, pointerEvents: 'none', zIndex: 1 }} />
 
                 <div style={{ backgroundColor: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px', textAlign: 'center', maxWidth: '520px', width: '100%', position: 'relative', zIndex: 2 }}>
-                    <h1 style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white', textShadow: '2px 2px 0 #b5005b', marginBottom: '1rem', lineHeight: 1.2 }}>I Fear this Ate 😂</h1>
+                    <h1 style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white', textShadow: '2px 2px 0 #b5005b', marginBottom: '1rem', lineHeight: 1.2 }}>The Top 9 Most Liked Captions from the Humor Project</h1>
                     <p style={{ color: 'rgba(255,255,255,0.95)', marginBottom: '2rem', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6 }}>
-                        The top 9 most liked captions from the Humor Project — voted by real students.
+                        Real students picked their favorites. Now it's your turn to rate them.
                     </p>
                     <button
                         onClick={(e) => {
@@ -85,7 +85,7 @@ export default function ProtectedPage() {
                         onMouseLeave={e => (e.target as HTMLButtonElement).style.boxShadow = 'none'}
                         style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,182,213,0.25))', color: '#ff6ec7', border: '1.5px solid rgba(255,255,255,0.7)', borderRadius: '50px', padding: '0.75rem 2.5rem', fontSize: '1rem', fontWeight: '800', cursor: 'pointer', letterSpacing: '1px', backdropFilter: 'blur(12px)', boxShadow: 'none', WebkitBackdropFilter: 'blur(12px)', transition: 'box-shadow 0.2s ease' }}
                     >
-                        Let's Meet the Divas 💅
+                        Meet the Divas 💅
                     </button>
                 </div>
 
@@ -101,7 +101,6 @@ export default function ProtectedPage() {
         )
     }
 
-
     if (current >= captions.length) {
         return (
             <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #ff6ec7 0%, #ff9a3c 50%, #ffde59 100%)', position: 'relative', overflow: 'hidden' }}>
@@ -112,12 +111,17 @@ export default function ProtectedPage() {
                 <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '45%', left: '30px', width: '25px', opacity: 0.6, pointerEvents: 'none', zIndex: 1 }} />
                 <div style={{ backgroundColor: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px', textAlign: 'center', maxWidth: '520px', width: '100%', position: 'relative', zIndex: 2 }}>
                     <h1 style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white', textShadow: '2px 2px 0 #b5005b', marginBottom: '1rem', lineHeight: 1.2 }}>You've Met the Divas!</h1>
-                    <p style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '0.5rem' }}>
-                        Your votes have been submitted.
+                    <p style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '2rem' }}>
+                        Your votes have been submitted 💋
                     </p>
-                    <p style={{ color: 'rgba(255,255,255,0.95)', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6 }}>
-                        The divas have been rated 💋
-                    </p>
+                    <button
+                        onClick={() => { setStarted(false); setCurrent(0) }}
+                        onMouseEnter={e => (e.target as HTMLButtonElement).style.boxShadow = '0 0 16px 4px rgba(255,110,199,0.5)'}
+                        onMouseLeave={e => (e.target as HTMLButtonElement).style.boxShadow = 'none'}
+                        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,182,213,0.25))', color: '#ff6ec7', border: '1.5px solid rgba(255,255,255,0.7)', borderRadius: '50px', padding: '0.75rem 2.5rem', fontSize: '1rem', fontWeight: '800', cursor: 'pointer', letterSpacing: '1px', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', transition: 'box-shadow 0.2s ease' }}
+                    >
+                        Go Back
+                    </button>
                 </div>
             </div>
         )

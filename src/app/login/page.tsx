@@ -13,7 +13,7 @@ export default function LoginPage() {
                     Sign in with Google 💋
                 </a>
                 <p style={{ color: 'rgba(255,255,255,0.90)', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6, fontSize: '0.95rem', letterSpacing: '0.5px' }}>
-                    Do not make her ask twice
+                    Do not make them ask twice
                 </p>
             </div>
         </div>
