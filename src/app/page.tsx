@@ -15,6 +15,13 @@ export default async function Home() {
 
     return (
         <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #ff6ec7 0%, #ff9a3c 50%, #ffde59 100%)', position: 'relative', overflow: 'hidden', padding: '4rem 2rem' }}>
+            {/* Sign in button */}
+            <div style={{ position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 10 }}>
+                <a href="/login" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,182,213,0.25))', color: '#ff2d78', border: '1.5px solid rgba(255,255,255,0.7)', borderRadius: '50px', padding: '0.5rem 1.5rem', fontSize: '0.9rem', fontWeight: '800', letterSpacing: '1px', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', textDecoration: 'none' }}>
+                    Sign in 💋
+                </a>
+            </div>
+
             {/* Flowers */}
             <img src="/flower.png" alt="" style={{ position: 'fixed', bottom: '-20px', right: '-20px', width: '280px', opacity: 0.9, pointerEvents: 'none', zIndex: 0 }} />
             <img src="/flower.png" alt="" style={{ position: 'fixed', top: '-30px', left: '-30px', width: '200px', opacity: 0.5, pointerEvents: 'none', zIndex: 0, transform: 'rotate(160deg)' }} />
