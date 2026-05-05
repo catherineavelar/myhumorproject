@@ -9,14 +9,9 @@ export default function LoginPage() {
             <img src="/secondprincess.png" alt="" style={{ position: 'absolute', bottom: '0px', left: '0px', width: '380px', pointerEvents: 'none', zIndex: 1, transform: 'scaleX(-1)' }} />
             <div style={{ backgroundColor: 'rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px', textAlign: 'center', maxWidth: '460px', width: '100%', position: 'relative', zIndex: 2, border: '1px solid rgba(255,255,255,0.2)' }}>
                 <h1 style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white', textShadow: '1px 1px 0 rgba(180,0,90,0.8)', marginBottom: '2rem', lineHeight: 1.2, fontFamily: 'Georgia, serif' }}>Babes… you need to log in.</h1>
-                <form action="/auth/login" method="POST">
-                    <button
-                        type="submit"
-                        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,182,213,0.25))', color: '#ff2d78', border: '1.5px solid rgba(255,255,255,0.7)', borderRadius: '50px', padding: '0.75rem 3rem', fontSize: '1rem', fontWeight: '800', cursor: 'pointer', letterSpacing: '1px', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', marginBottom: '1rem' }}
-                    >
-                        Sign in with Google 💋
-                    </button>
-                </form>
+                <a href="/auth/login" style={{ display: 'inline-block', background: 'linear-gradient(135deg, rgba(255,255,255,0.45), rgba(255,182,213,0.25))', color: '#ff2d78', border: '1.5px solid rgba(255,255,255,0.7)', borderRadius: '50px', padding: '0.75rem 3rem', fontSize: '1rem', fontWeight: '800', cursor: 'pointer', letterSpacing: '1px', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', marginBottom: '1rem', textDecoration: 'none' }}>
+                    Sign in with Google 💋
+                </a>
                 <p style={{ color: 'rgba(255,255,255,0.90)', fontFamily: 'Times New Roman, serif', fontStyle: 'italic', lineHeight: 1.6, fontSize: '0.95rem', letterSpacing: '0.5px' }}>
                     Do not make her ask twice
                 </p>
