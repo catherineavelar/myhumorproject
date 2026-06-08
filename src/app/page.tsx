@@ -44,7 +44,7 @@ export default async function Home() {
                     {captions.map((caption: any) => (
                         <div key={caption.id} style={{ backgroundColor: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', borderRadius: '20px', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
                             {caption.images?.url && (
-                                <img src={caption.images.url} alt="caption" style={{ width: '100%', borderRadius: '12px', marginBottom: '1rem', maxHeight: '160px', objectFit: 'cover' }} />
+                                <img src={caption.images.url} alt="caption" style={{ width: '100%', borderRadius: '12px', marginBottom: '1rem', maxHeight: '200px', objectFit: 'contain' }} />
                             )}
                             <p style={{ color: 'white', fontSize: '1rem', fontWeight: '700', marginBottom: '0.5rem', textShadow: '1px 1px 0 rgba(0,0,0,0.15)' }}>{caption.content}</p>
                             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>❤️ {caption.like_count} likes</p>
