@@ -2,9 +2,7 @@ export default function LoginPage() {
     return (
         <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #ff6ec7 0%, #ff9a3c 50%, #ffde59 100%)', position: 'relative', overflow: 'hidden' }}>
             <img src="/flower.png" alt="" style={{ position: 'absolute', top: '-30px', left: '-30px', width: '200px', opacity: 0.5, pointerEvents: 'none', zIndex: 1, transform: 'rotate(160deg)' }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '40px', right: '60px', width: '50px', opacity: 0.85, pointerEvents: 'none', zIndex: 1 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', bottom: '80px', left: '40px', width: '35px', opacity: 0.7, pointerEvents: 'none', zIndex: 1 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '45%', left: '30px', width: '25px', opacity: 0.6, pointerEvents: 'none', zIndex: 1 }} />
+
             <img src="/princess.png" alt="" style={{ position: 'absolute', bottom: '0px', right: '0px', width: '420px', pointerEvents: 'none', zIndex: 1 }} />
             <img src="/secondprincess.png" alt="" style={{ position: 'absolute', bottom: '0px', left: '0px', width: '380px', pointerEvents: 'none', zIndex: 1, transform: 'scaleX(-1)' }} />
             <div style={{ backgroundColor: 'rgba(0,0,0,0.15)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px', textAlign: 'center', maxWidth: '460px', width: '100%', position: 'relative', zIndex: 2, border: '1px solid rgba(255,255,255,0.2)' }}>
