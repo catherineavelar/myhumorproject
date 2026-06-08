@@ -143,9 +143,6 @@ export default function ProtectedPage() {
         <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #ff6ec7 0%, #ff9a3c 50%, #ffde59 100%)', position: 'relative', overflow: 'hidden' }}>
             <img src="/flower.png" alt="" style={{ position: 'absolute', bottom: '-20px', right: '-20px', width: '280px', opacity: 0.9, pointerEvents: 'none', zIndex: 1 }} />
             <img src="/flower.png" alt="" style={{ position: 'absolute', top: '-30px', left: '-30px', width: '200px', opacity: 0.5, pointerEvents: 'none', zIndex: 1, transform: 'rotate(160deg)' }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '40px', right: '60px', width: '50px', opacity: 0.85, pointerEvents: 'none', zIndex: 1 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', bottom: '80px', left: '40px', width: '35px', opacity: 0.7, pointerEvents: 'none', zIndex: 1 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'absolute', top: '45%', left: '30px', width: '25px', opacity: 0.6, pointerEvents: 'none', zIndex: 1 }} />
 
             <div style={{ backgroundColor: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', borderRadius: '24px', padding: '2rem', maxWidth: '480px', width: '100%', position: 'relative', zIndex: 2 }}>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.75rem', letterSpacing: '2px', textTransform: 'uppercase', textAlign: 'center', marginBottom: '1rem' }}>{current + 1} of {captions.length}</p>

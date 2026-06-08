@@ -26,9 +26,6 @@ export default async function Home() {
             <img src="/flower.png" alt="" style={{ position: 'fixed', bottom: '-20px', right: '-20px', width: '280px', opacity: 0.9, pointerEvents: 'none', zIndex: 0 }} />
             <img src="/flower.png" alt="" style={{ position: 'fixed', top: '-30px', left: '-30px', width: '200px', opacity: 0.5, pointerEvents: 'none', zIndex: 0, transform: 'rotate(160deg)' }} />
             {/* Sparkles */}
-            <img src="/sparkle.png" alt="" style={{ position: 'fixed', top: '40px', right: '60px', width: '50px', opacity: 0.85, pointerEvents: 'none', zIndex: 0 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'fixed', bottom: '80px', left: '40px', width: '35px', opacity: 0.7, pointerEvents: 'none', zIndex: 0 }} />
-            <img src="/sparkle.png" alt="" style={{ position: 'fixed', top: '45%', left: '30px', width: '25px', opacity: 0.6, pointerEvents: 'none', zIndex: 0 }} />
 
             <div style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto' }}>
                 {/* Header */}
